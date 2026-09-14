@@ -1,0 +1,372 @@
+<!DOCTYPE html><html class="light" lang="en" style=""><head><meta charset="utf-8"><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" name="viewport"><title>Standard Calculator</title><link href="https://fonts.googleapis.com" rel="preconnect"><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Roboto+Flex:opsz,wght@8..144,300;400;500;600&amp;display=swap" rel="stylesheet"><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"><style>@layer base { html, body { width: 100vw; margin: 0; padding: 0; min-height: 100%; background-color: #faf8ff; } .pb-safe { padding-bottom: env(safe-area-inset-bottom, 0px); } .pt-safe { padding-top: env(safe-area-inset-top, 0px); } } ::-webkit-scrollbar { display: none; } * { -webkit-tap-highlight-color: transparent; }</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config = { darkMode: 'class', theme: { extend: { colors: { 'on-surface-variant': '#464555', 'tertiary-fixed': '#ffdadb', 'on-tertiary-container': '#ffd0d2', 'error': '#ba1a1a', 'error-container': '#ffdad6', 'surface-container': '#eaedff', 'surface-variant': '#dae2fd', 'surface-dim': '#d2d9f4', 'primary-container': '#4f46e5', 'on-background': '#131b2e', 'on-secondary-container': '#fffbff', 'tertiary-fixed-dim': '#ffb2b7', 'on-tertiary-fixed-variant': '#92002a', 'tertiary-container': '#bf0f3c', 'inverse-surface': '#283044', 'tertiary': '#95002b', 'on-primary': '#ffffff', 'surface-container-high': '#e2e7ff', 'on-secondary': '#ffffff', 'primary': '#3525cd', 'surface-bright': '#faf8ff', 'outline': '#777587', 'secondary-fixed': '#e1e0ff', 'surface-container-lowest': '#ffffff', 'secondary': '#4648d4', 'surface-container-low': '#f2f3ff', 'on-primary-fixed': '#0f0069', 'secondary-container': '#6063ee', 'surface-container-highest': '#dae2fd', 'on-secondary-fixed-variant': '#2f2ebe', 'inverse-on-surface': '#eef0ff', 'on-error-container': '#93000a', 'primary-fixed-dim': '#c3c0ff', 'surface': '#faf8ff', 'secondary-fixed-dim': '#c0c1ff', 'primary-fixed': '#e2dfff', 'background': '#faf8ff', 'on-primary-container': '#dad7ff', 'on-primary-fixed-variant': '#3323cc', 'on-tertiary-fixed': '#40000d', 'on-secondary-fixed': '#07006c', 'on-tertiary': '#ffffff', 'on-surface': '#131b2e', 'on-error': '#ffffff', 'surface-tint': '#4d44e3', 'inverse-primary': '#c3c0ff', 'outline-variant': '#c7c4d8' }, borderRadius: { 'DEFAULT': '0.25rem', 'lg': '0.5rem', 'xl': '0.75rem', 'full': '9999px' }, spacing: { 'space-md': '0.75rem', 'gutter': '0.75rem', 'margin': '1rem', 'space-xs': '0.25rem', 'space-lg': '1rem', 'space-sm': '0.5rem', 'gutter-desktop': '1rem', 'margin-tablet': '1.5rem', 'margin-desktop': '2rem', 'space-xl': '1.5rem' }, fontFamily: { 'display-lg': ['Roboto Flex'], 'title-lg': ['Inter'], 'label-keypad-sm': ['Roboto Flex'], 'body-md': ['Inter'], 'display-md-mobile': ['Roboto Flex'], 'display-md': ['Roboto Flex'], 'headline-lg': ['Roboto Flex'], 'headline-md': ['Roboto Flex'], 'label-keypad': ['Roboto Flex'], 'label-md': ['Inter'], 'body-lg': ['Inter'], 'display-lg-mobile': ['Roboto Flex'], 'title-md': ['Inter'] }, fontSize: { 'display-lg': ['56px', { lineHeight: '64px', letterSpacing: '-0.02em', fontWeight: '300' }], 'title-lg': ['20px', { lineHeight: '28px', fontWeight: '600' }], 'label-keypad-sm': ['18px', { lineHeight: '22px', fontWeight: '500' }], 'body-md': ['14px', { lineHeight: '20px', fontWeight: '400' }], 'display-md-mobile': ['28px', { lineHeight: '36px', letterSpacing: '-0.01em', fontWeight: '400' }], 'display-md': ['36px', { lineHeight: '44px', letterSpacing: '-0.01em', fontWeight: '400' }], 'headline-lg': ['32px', { lineHeight: '40px', fontWeight: '500' }], 'headline-md': ['24px', { lineHeight: '32px', fontWeight: '500' }], 'label-keypad': ['24px', { lineHeight: '28px', fontWeight: '500' }], 'label-md': ['12px', { lineHeight: '16px', letterSpacing: '0.02em', fontWeight: '500' }], 'body-lg': ['16px', { lineHeight: '24px', fontWeight: '400' }], 'display-lg-mobile': ['40px', { lineHeight: '48px', letterSpacing: '-0.02em', fontWeight: '400' }], 'title-md': ['16px', { lineHeight: '24px', fontWeight: '600' }] } } } };</script><style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head><body class="bg-surface font-body-md text-on-surface antialiased select-none"><header class="fixed top-0 w-full z-50 bg-surface/90 backdrop-blur-xl pt-safe"><div class="w-full h-7 px-space-lg flex items-center justify-between text-on-surface"><span class="font-label-md text-label-md font-semibold tracking-tight">9:41</span><div class="flex items-center gap-space-xs text-on-surface"><span class="material-symbols-outlined text-[16px]">signal_cellular_4_bar</span><span class="material-symbols-outlined text-[16px]">wifi</span><span class="material-symbols-outlined text-[16px]">battery_full</span></div></div><div class="h-16 px-space-lg flex items-center justify-between shadow-[0_1px_8px_rgba(0,0,0,0.03)]"><div class="flex items-center gap-space-sm"><h1 class="font-title-lg text-title-lg text-on-surface font-semibold tracking-tight">Rimon Calculator</h1></div></div></header><main class="flex flex-col relative w-full pt-16 bg-surface min-h-screen pb-24"><div class="flex flex-col w-full max-w-[440px] mx-auto px-margin select-none">
+<!-- Mode Switcher & Quick Tools Pill Bar -->
+<div class="flex items-center justify-between pt-space-xs pb-space-sm">
+<div class="inline-flex items-center p-1 bg-surface-container-high rounded-full shadow-[inset_0_1px_2px_rgba(19,27,46,0.06)]">
+<button class="px-space-md py-1 rounded-full bg-surface-container-lowest text-primary font-label-md text-label-md font-semibold shadow-sm transition-all duration-200" id="mode-std" type="button">
+        Standard
+      </button>
+<button class="px-space-md py-1 rounded-full text-on-surface-variant hover:text-on-surface font-label-md text-label-md font-medium transition-all duration-200" id="mode-sci" type="button">
+        DEG
+      </button>
+</div>
+<!-- Quick Floating Action Badges -->
+<div class="flex items-center gap-space-xs">
+<button class="flex items-center gap-1 px-space-sm py-1 rounded-full bg-surface-container text-on-surface-variant hover:text-primary active:scale-95 transition-all text-label-md font-label-md" id="copy-badge" type="button">
+<span class="material-symbols-outlined text-[14px]">content_copy</span>
+<span class="">Copy</span>
+</button>
+<button class="w-7 h-7 flex items-center justify-center rounded-full bg-surface-container text-on-surface-variant hover:text-on-surface active:scale-90 transition-transform" id="clear-tape-btn" type="button">
+<span class="material-symbols-outlined text-[16px]">clear_all</span>
+</button>
+</div>
+</div>
+<!-- Realtime Calculation Display (Tactile Glass Screen) -->
+<div class="relative flex flex-col justify-end w-full min-h-[170px] p-space-lg rounded-2xl bg-surface-container-low shadow-[inset_0_2px_6px_rgba(19,27,46,0.03)] overflow-hidden transition-all duration-300" id="calculator-display">
+<!-- Subtle Ambient Glow inside display -->
+<div class="absolute -top-10 -right-10 w-36 h-36 rounded-full bg-primary-fixed-dim/20 blur-2xl pointer-events-none"></div>
+<!-- Previous expression line -->
+<div class="w-full flex items-center justify-end overflow-x-auto no-scrollbar mb-1">
+<span class="font-body-lg text-body-lg text-on-surface-variant tracking-wide whitespace-nowrap text-right select-all" id="expression-text">1,250 × 24 +</span>
+</div>
+<!-- Primary readout container -->
+<div class="w-full flex items-center justify-end overflow-x-auto no-scrollbar py-1">
+<span class="font-display-lg-mobile text-display-lg-mobile font-headline-lg text-on-surface tracking-tight whitespace-nowrap text-right transition-transform duration-100" id="primary-output">30,000</span>
+</div>
+<!-- Live Preview or Ans Memory chip -->
+<div class="flex items-center justify-between mt-space-xs pt-space-xs border-t-0">
+<div class="flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-secondary-fixed/60 text-on-secondary-fixed-variant text-label-md font-label-md shadow-[0_1px_2px_rgba(15,23,42,0.03)]">
+<span class="material-symbols-outlined text-[13px]">history_edu</span>
+<span class="font-semibold" id="ans-chip-text">Ans = 30,000</span>
+</div>
+<div class="flex items-center gap-1 text-on-surface-variant/70 font-label-md text-label-md opacity-80" id="gesture-hint">
+<span class="material-symbols-outlined text-[14px]">swipe_left</span>
+<span class="">Swipe back</span>
+</div>
+</div>
+</div>
+<!-- Interactive Tactile Keypad Matrix -->
+<div class="w-full grid grid-cols-4 gap-3 pt-space-lg pb-space-sm" id="keypad-grid">
+<!-- Row 1 -->
+<!-- AC (All Clear) Button -->
+<button class="calc-btn group relative h-16 rounded-2xl bg-tertiary-fixed text-on-tertiary-fixed-variant active:scale-95 shadow-[0_2px_6px_rgba(19,27,46,0.04)] active:shadow-none flex items-center justify-center transition-all duration-150 overflow-hidden" data-key="AC" type="button">
+<div class="absolute inset-0 bg-white/20 opacity-0 group-active:opacity-100 transition-opacity"></div>
+<span class="font-headline-md text-headline-md font-semibold tracking-tight">AC</span>
+</button>
+<!-- Parentheses Button -->
+<button class="calc-btn group relative h-16 rounded-2xl bg-surface-container-high text-on-surface active:scale-95 shadow-[0_2px_6px_rgba(19,27,46,0.04)] active:shadow-none flex items-center justify-center transition-all duration-150 overflow-hidden" data-key="()" type="button">
+<div class="absolute inset-0 bg-on-surface/5 opacity-0 group-active:opacity-100 transition-opacity"></div>
+<span class="font-headline-md text-headline-md font-medium">( )</span>
+</button>
+<!-- Percent Button -->
+<button class="calc-btn group relative h-16 rounded-2xl bg-surface-container-high text-on-surface active:scale-95 shadow-[0_2px_6px_rgba(19,27,46,0.04)] active:shadow-none flex items-center justify-center transition-all duration-150 overflow-hidden" data-key="%" type="button">
+<div class="absolute inset-0 bg-on-surface/5 opacity-0 group-active:opacity-100 transition-opacity"></div>
+<span class="font-headline-md text-headline-md font-medium">%</span>
+</button>
+<!-- Divide Operator Button -->
+<button class="calc-btn group relative h-16 rounded-2xl bg-primary-fixed text-primary active:scale-95 shadow-[0_3px_8px_rgba(53,37,205,0.12)] active:shadow-none flex items-center justify-center transition-all duration-150 overflow-hidden" data-key="÷" type="button">
+<div class="absolute inset-0 bg-primary/10 opacity-0 group-active:opacity-100 transition-opacity"></div>
+<span class="font-display-md-mobile text-display-md-mobile font-headline-md leading-none">÷</span>
+</button>
+<!-- Row 2 -->
+<!-- 7 Button -->
+<button class="calc-btn group relative h-16 rounded-2xl bg-surface-container-lowest text-on-surface active:scale-95 shadow-[0_3px_8px_rgba(19,27,46,0.04)] active:shadow-none flex items-center justify-center transition-all duration-150 overflow-hidden" data-key="7" type="button">
+<div class="absolute inset-0 bg-primary/5 opacity-0 group-active:opacity-100 transition-opacity"></div>
+<span class="font-label-keypad text-label-keypad font-semibold">7</span>
+</button>
+<!-- 8 Button -->
+<button class="calc-btn group relative h-16 rounded-2xl bg-surface-container-lowest text-on-surface active:scale-95 shadow-[0_3px_8px_rgba(19,27,46,0.04)] active:shadow-none flex items-center justify-center transition-all duration-150 overflow-hidden" data-key="8" type="button">
+<div class="absolute inset-0 bg-primary/5 opacity-0 group-active:opacity-100 transition-opacity"></div>
+<span class="font-label-keypad text-label-keypad font-semibold">8</span>
+</button>
+<!-- 9 Button -->
+<button class="calc-btn group relative h-16 rounded-2xl bg-surface-container-lowest text-on-surface active:scale-95 shadow-[0_3px_8px_rgba(19,27,46,0.04)] active:shadow-none flex items-center justify-center transition-all duration-150 overflow-hidden" data-key="9" type="button">
+<div class="absolute inset-0 bg-primary/5 opacity-0 group-active:opacity-100 transition-opacity"></div>
+<span class="font-label-keypad text-label-keypad font-semibold">9</span>
+</button>
+<!-- Multiply Operator Button -->
+<button class="calc-btn group relative h-16 rounded-2xl bg-primary-fixed text-primary active:scale-95 shadow-[0_3px_8px_rgba(53,37,205,0.12)] active:shadow-none flex items-center justify-center transition-all duration-150 overflow-hidden" data-key="×" type="button">
+<div class="absolute inset-0 bg-primary/10 opacity-0 group-active:opacity-100 transition-opacity"></div>
+<span class="font-headline-md text-headline-md leading-none">×</span>
+</button>
+<!-- Row 3 -->
+<!-- 4 Button -->
+<button class="calc-btn group relative h-16 rounded-2xl bg-surface-container-lowest text-on-surface active:scale-95 shadow-[0_3px_8px_rgba(19,27,46,0.04)] active:shadow-none flex items-center justify-center transition-all duration-150 overflow-hidden" data-key="4" type="button">
+<div class="absolute inset-0 bg-primary/5 opacity-0 group-active:opacity-100 transition-opacity"></div>
+<span class="font-label-keypad text-label-keypad font-semibold">4</span>
+</button>
+<!-- 5 Button -->
+<button class="calc-btn group relative h-16 rounded-2xl bg-surface-container-lowest text-on-surface active:scale-95 shadow-[0_3px_8px_rgba(19,27,46,0.04)] active:shadow-none flex items-center justify-center transition-all duration-150 overflow-hidden" data-key="5" type="button">
+<div class="absolute inset-0 bg-primary/5 opacity-0 group-active:opacity-100 transition-opacity"></div>
+<span class="font-label-keypad text-label-keypad font-semibold">5</span>
+</button>
+<!-- 6 Button -->
+<button class="calc-btn group relative h-16 rounded-2xl bg-surface-container-lowest text-on-surface active:scale-95 shadow-[0_3px_8px_rgba(19,27,46,0.04)] active:shadow-none flex items-center justify-center transition-all duration-150 overflow-hidden" data-key="6" type="button">
+<div class="absolute inset-0 bg-primary/5 opacity-0 group-active:opacity-100 transition-opacity"></div>
+<span class="font-label-keypad text-label-keypad font-semibold">6</span>
+</button>
+<!-- Subtract Operator Button -->
+<button class="calc-btn group relative h-16 rounded-2xl bg-primary-fixed text-primary active:scale-95 shadow-[0_3px_8px_rgba(53,37,205,0.12)] active:shadow-none flex items-center justify-center transition-all duration-150 overflow-hidden" data-key="−" type="button">
+<div class="absolute inset-0 bg-primary/10 opacity-0 group-active:opacity-100 transition-opacity"></div>
+<span class="font-display-md-mobile text-display-md-mobile font-headline-md leading-none">−</span>
+</button>
+<!-- Row 4 -->
+<!-- 1 Button -->
+<button class="calc-btn group relative h-16 rounded-2xl bg-surface-container-lowest text-on-surface active:scale-95 shadow-[0_3px_8px_rgba(19,27,46,0.04)] active:shadow-none flex items-center justify-center transition-all duration-150 overflow-hidden" data-key="1" type="button">
+<div class="absolute inset-0 bg-primary/5 opacity-0 group-active:opacity-100 transition-opacity"></div>
+<span class="font-label-keypad text-label-keypad font-semibold">1</span>
+</button>
+<!-- 2 Button -->
+<button class="calc-btn group relative h-16 rounded-2xl bg-surface-container-lowest text-on-surface active:scale-95 shadow-[0_3px_8px_rgba(19,27,46,0.04)] active:shadow-none flex items-center justify-center transition-all duration-150 overflow-hidden" data-key="2" type="button">
+<div class="absolute inset-0 bg-primary/5 opacity-0 group-active:opacity-100 transition-opacity"></div>
+<span class="font-label-keypad text-label-keypad font-semibold">2</span>
+</button>
+<!-- 3 Button -->
+<button class="calc-btn group relative h-16 rounded-2xl bg-surface-container-lowest text-on-surface active:scale-95 shadow-[0_3px_8px_rgba(19,27,46,0.04)] active:shadow-none flex items-center justify-center transition-all duration-150 overflow-hidden" data-key="3" type="button">
+<div class="absolute inset-0 bg-primary/5 opacity-0 group-active:opacity-100 transition-opacity"></div>
+<span class="font-label-keypad text-label-keypad font-semibold">3</span>
+</button>
+<!-- Add Operator Button -->
+<button class="calc-btn group relative h-16 rounded-2xl bg-primary-fixed text-primary active:scale-95 shadow-[0_3px_8px_rgba(53,37,205,0.12)] active:shadow-none flex items-center justify-center transition-all duration-150 overflow-hidden" data-key="+" type="button">
+<div class="absolute inset-0 bg-primary/10 opacity-0 group-active:opacity-100 transition-opacity"></div>
+<span class="font-display-md-mobile text-display-md-mobile font-headline-md leading-none">+</span>
+</button>
+<!-- Row 5 -->
+<!-- 0 Button -->
+<button class="calc-btn group relative h-16 rounded-2xl bg-surface-container-lowest text-on-surface active:scale-95 shadow-[0_3px_8px_rgba(19,27,46,0.04)] active:shadow-none flex items-center justify-center transition-all duration-150 overflow-hidden" data-key="0" type="button">
+<div class="absolute inset-0 bg-primary/5 opacity-0 group-active:opacity-100 transition-opacity"></div>
+<span class="font-label-keypad text-label-keypad font-semibold">0</span>
+</button>
+<!-- Decimal Point Button -->
+<button class="calc-btn group relative h-16 rounded-2xl bg-surface-container-lowest text-on-surface active:scale-95 shadow-[0_3px_8px_rgba(19,27,46,0.04)] active:shadow-none flex items-center justify-center transition-all duration-150 overflow-hidden" data-key="." type="button">
+<div class="absolute inset-0 bg-primary/5 opacity-0 group-active:opacity-100 transition-opacity"></div>
+<span class="font-display-md-mobile text-display-md-mobile font-bold leading-none">.</span>
+</button>
+<!-- Backspace Key -->
+<button class="calc-btn group relative h-16 rounded-2xl bg-surface-container-high text-on-surface active:scale-95 shadow-[0_2px_6px_rgba(19,27,46,0.04)] active:shadow-none flex items-center justify-center transition-all duration-150 overflow-hidden" data-key="BACKSPACE" type="button">
+<div class="absolute inset-0 bg-on-surface/5 opacity-0 group-active:opacity-100 transition-opacity"></div>
+<span class="material-symbols-outlined text-[26px]">backspace</span>
+</button>
+<!-- Equals Action Button -->
+<button class="calc-btn group relative h-16 rounded-2xl bg-primary text-on-primary active:scale-95 shadow-[0_8px_20px_-4px_rgba(53,37,205,0.45)] active:shadow-[0_2px_6px_rgba(53,37,205,0.3)] flex items-center justify-center transition-all duration-150 overflow-hidden" data-key="=" type="button">
+<div class="absolute inset-0 bg-white/20 opacity-0 group-active:opacity-100 transition-opacity"></div>
+<span class="font-display-md-mobile text-display-md-mobile font-bold leading-none">=</span>
+</button>
+</div>
+<!-- Android Styled Navigation Pill Handle Indicator -->
+<div class="w-full flex items-center justify-center pt-space-xs pb-1">
+<div class="w-32 h-1 rounded-full bg-on-surface/20"></div>
+</div>
+</div>
+<script>
+(() => {
+  let primaryDisplay = '30000';
+  let expressionDisplay = '1,250 × 24 +';
+  let lastResult = '30,000';
+  let waitingForNewOperand = false;
+
+  const primaryEl = document.getElementById('primary-output');
+  const expressionEl = document.getElementById('expression-text');
+  const ansChipEl = document.getElementById('ans-chip-text');
+  const copyBtn = document.getElementById('copy-badge');
+  const clearTapeBtn = document.getElementById('clear-tape-btn');
+  const displayBox = document.getElementById('calculator-display');
+
+  function formatNumberWithCommas(str) {
+    if (!str) return '0';
+    if (str === 'Error' || str === 'NaN') return str;
+    const parts = str.split('.');
+    parts[0] = parts[0].replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+    return parts.join('.');
+  }
+
+  function updateView() {
+    primaryEl.textContent = formatNumberWithCommas(primaryDisplay);
+    expressionEl.textContent = expressionDisplay;
+    ansChipEl.textContent = `Ans = ${formatNumberWithCommas(lastResult)}`;
+  }
+
+  function sanitizeForEval(expr) {
+    return expr
+      .replace(/,/g, '')
+      .replace(/×/g, '*')
+      .replace(/÷/g, '/')
+      .replace(/−/g, '-');
+  }
+
+  function evaluateCurrent() {
+    try {
+      const fullExpression = expressionDisplay + (waitingForNewOperand ? '' : primaryDisplay);
+      const clean = sanitizeForEval(fullExpression);
+      if (!clean) return;
+      const calcResult = Function('"use strict";return (' + clean + ')')();
+      if (isNaN(calcResult) || !isFinite(calcResult)) {
+        primaryDisplay = 'Error';
+      } else {
+        const rounded = Number(Math.round(calcResult + 'e+8') + 'e-8');
+        primaryDisplay = String(rounded);
+        lastResult = primaryDisplay;
+      }
+    } catch (e) {
+      primaryDisplay = 'Error';
+    }
+    expressionDisplay = '';
+    waitingForNewOperand = true;
+    updateView();
+  }
+
+  function handleKey(key) {
+    if (window.navigator?.vibrate) {
+      window.navigator.vibrate(8);
+    }
+
+    if (key >= '0' && key <= '9') {
+      if (waitingForNewOperand || primaryDisplay === '0' || primaryDisplay === 'Error') {
+        primaryDisplay = key;
+        waitingForNewOperand = false;
+      } else {
+        if (primaryDisplay.replace('.', '').length < 12) {
+          primaryDisplay += key;
+        }
+      }
+      updateView();
+      return;
+    }
+
+    if (key === '.') {
+      if (waitingForNewOperand || primaryDisplay === 'Error') {
+        primaryDisplay = '0.';
+        waitingForNewOperand = false;
+      } else if (!primaryDisplay.includes('.')) {
+        primaryDisplay += '.';
+      }
+      updateView();
+      return;
+    }
+
+    if (key === 'AC') {
+      primaryDisplay = '0';
+      expressionDisplay = '';
+      waitingForNewOperand = false;
+      updateView();
+      return;
+    }
+
+    if (key === 'BACKSPACE') {
+      if (primaryDisplay === 'Error' || waitingForNewOperand) {
+        primaryDisplay = '0';
+      } else if (primaryDisplay.length > 1) {
+        primaryDisplay = primaryDisplay.slice(0, -1);
+      } else {
+        primaryDisplay = '0';
+      }
+      updateView();
+      return;
+    }
+
+    if (key === '%') {
+      const num = parseFloat(primaryDisplay);
+      if (!isNaN(num)) {
+        primaryDisplay = String(num / 100);
+        updateView();
+      }
+      return;
+    }
+
+    if (key === '()') {
+      if (primaryDisplay.startsWith('(') && primaryDisplay.endsWith(')')) {
+        primaryDisplay = primaryDisplay.slice(1, -1);
+      } else {
+        primaryDisplay = `(${primaryDisplay})`;
+      }
+      updateView();
+      return;
+    }
+
+    if (['+', '−', '×', '÷'].includes(key)) {
+      if (expressionDisplay !== '' && !waitingForNewOperand) {
+        try {
+          const interim = sanitizeForEval(expressionDisplay + primaryDisplay);
+          const res = Function('"use strict";return (' + interim + ')')();
+          primaryDisplay = String(Number(Math.round(res + 'e+8') + 'e-8'));
+          lastResult = primaryDisplay;
+        } catch (e) {}
+      }
+      expressionDisplay = `${formatNumberWithCommas(primaryDisplay)} ${key} `;
+      waitingForNewOperand = true;
+      updateView();
+      return;
+    }
+
+    if (key === '=') {
+      evaluateCurrent();
+    }
+  }
+
+  // Bind keypad events
+  document.querySelectorAll('.calc-btn').forEach(button => {
+    button.addEventListener('click', (e) => {
+      const key = button.getAttribute('data-key');
+      handleKey(key);
+
+      // Micro ripple effect
+      const circle = document.createElement('span');
+      const diameter = Math.max(button.clientWidth, button.clientHeight);
+      const radius = diameter / 2;
+      const rect = button.getBoundingClientRect();
+      circle.style.width = circle.style.height = `${diameter}px`;
+      circle.style.left = `${e.clientX - rect.left - radius}px`;
+      circle.style.top = `${e.clientY - rect.top - radius}px`;
+      circle.classList.add('absolute', 'rounded-full', 'bg-on-surface/10', 'pointer-events-none', 'animate-ping');
+      button.appendChild(circle);
+      setTimeout(() => circle.remove(), 400);
+    });
+  });
+
+  // Swipe gesture support on readout display for single backspace
+  let touchStartX = 0;
+  displayBox.addEventListener('touchstart', (e) => {
+    touchStartX = e.changedTouches[0].screenX;
+  }, { passive: true });
+
+  displayBox.addEventListener('touchend', (e) => {
+    const touchEndX = e.changedTouches[0].screenX;
+    if (touchStartX - touchEndX > 45) {
+      handleKey('BACKSPACE');
+    }
+  }, { passive: true });
+
+  // Quick Copy interaction
+  copyBtn.addEventListener('click', () => {
+    const textToCopy = primaryDisplay;
+    navigator.clipboard?.writeText(textToCopy);
+    const span = copyBtn.querySelector('span:last-child');
+    const prev = span.textContent;
+    span.textContent = 'Copied!';
+    setTimeout(() => { span.textContent = prev; }, 1200);
+  });
+
+  // Clear Tape button
+  clearTapeBtn.addEventListener('click', () => {
+    expressionDisplay = '';
+    updateView();
+  });
+
+  // Mode button toggle demo
+  const modeStd = document.getElementById('mode-std');
+  const modeSci = document.getElementById('mode-sci');
+
+  modeSci.addEventListener('click', () => {
+    modeSci.textContent = modeSci.textContent === 'DEG' ? 'RAD' : 'DEG';
+  });
+
+  updateView();
+})();
+</script></main><nav class="fixed bottom-0 w-full z-50 pb-safe bg-surface/90 backdrop-blur-xl shadow-[0_-2px_12px_rgba(0,0,0,0.04)]" data-active-classes="bg-secondary-fixed text-on-secondary-fixed font-semibold shadow-[0_2px_6px_rgba(15,23,42,0.04)]"></nav>
+
+</body></html>
